@@ -53,6 +53,8 @@ body {
 
 .site-header { text-align: center; margin-bottom: 16px; }
 .site-header h1 { margin: 0 0 4px; font-size: 28px; letter-spacing: 0.5px; }
+.site-header .header-top { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.site-header .author { color: var(--muted); font-size: 14px; white-space: nowrap; }
 .site-header .subtitle { margin: 0; color: var(--muted); font-size: 14px; }
 
 .game-card {
