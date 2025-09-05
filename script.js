@@ -249,7 +249,7 @@
       }
       ctx.stroke();
 
-      // 食物（通用红色大圆）
+      // 食物（黄金金币）
       const fx = this.food.x * cell;
       const fy = this.food.y * cell;
       const pad = Math.floor(cell * 0.12);
@@ -257,24 +257,35 @@
       const cy = fy + cell / 2;
       const r = Math.max(4, Math.floor(cell * 0.36));
       ctx.save();
-      const gApple = ctx.createRadialGradient(cx - r * 0.4, cy - r * 0.5, r * 0.2, cx, cy, r);
-      gApple.addColorStop(0, '#ff6b6b');
-      gApple.addColorStop(1, '#ef4444');
-      ctx.fillStyle = gApple;
-      ctx.strokeStyle = 'rgba(153, 27, 27, 0.6)';
+      // 外圈金色基底
+      const gOuter = ctx.createRadialGradient(cx - r * 0.35, cy - r * 0.55, r * 0.2, cx, cy, r);
+      gOuter.addColorStop(0, '#fde68a'); // 亮
+      gOuter.addColorStop(1, '#f59e0b'); // 深
+      ctx.fillStyle = gOuter;
+      ctx.strokeStyle = 'rgba(120,53,15,0.55)';
       ctx.lineWidth = Math.max(1, Math.floor(cell / 12));
-      ctx.shadowColor = 'rgba(0,0,0,0.35)';
-      ctx.shadowBlur = Math.floor(cell * 0.15);
+      ctx.shadowColor = 'rgba(0,0,0,0.3)';
+      ctx.shadowBlur = Math.floor(cell * 0.14);
       ctx.beginPath();
       ctx.arc(cx, cy, r, 0, Math.PI * 2);
       ctx.fill();
       ctx.stroke();
-      // 高光点
+      // 内盘
+      const rin = Math.floor(r * 0.72);
+      const gInner = ctx.createLinearGradient(cx, cy - rin, cx, cy + rin);
+      gInner.addColorStop(0, '#fff7c2');
+      gInner.addColorStop(1, '#fbbf24');
       ctx.shadowBlur = 0;
-      ctx.fillStyle = 'rgba(255,255,255,0.35)';
+      ctx.fillStyle = gInner;
       ctx.beginPath();
-      ctx.arc(cx - r * 0.35, cy - r * 0.35, Math.max(2, Math.floor(r * 0.18)), 0, Math.PI * 2);
+      ctx.arc(cx, cy, rin, 0, Math.PI * 2);
       ctx.fill();
+      // 高光弧
+      ctx.strokeStyle = 'rgba(255,255,255,0.6)';
+      ctx.lineWidth = Math.max(1, Math.floor(r * 0.18));
+      ctx.beginPath();
+      ctx.arc(cx - r * 0.15, cy - r * 0.15, r * 0.65, -Math.PI * 0.9, -Math.PI * 0.4);
+      ctx.stroke();
       ctx.restore();
 
       // 蛇身
