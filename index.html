@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>贪吃蛇 Snake</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="site-header">
+        <h1>贪吃蛇 Snake</h1>
+        <p class="subtitle">纯前端实现 · 可手机操作</p>
+      </header>
+
+      <main class="game-card">
+        <div class="hud">
+          <div class="metric">分数：<span id="score">0</span></div>
+          <div class="metric">最高：<span id="highScore">0</span></div>
+        </div>
+
+        <div class="stage">
+          <div class="board-wrap">
+            <canvas id="game" width="480" height="480" aria-label="游戏画布"></canvas>
+            <div id="overlay" class="overlay">
+              <div class="overlay-content">
+                <div id="overlay-title" class="overlay-title">准备开始</div>
+                <div id="overlay-sub" class="overlay-sub">按 空格 或 点击开始</div>
+              </div>
+            </div>
+          </div>
+
+          <aside class="records" aria-label="最高分记录">
+            <div class="records-title">最高分记录</div>
+            <ol id="recordsList" class="records-list"></ol>
+          </aside>
+        </div>
+
+        <div class="controls">
+          <button id="startPauseBtn" class="btn primary">开始</button>
+          <button id="restartBtn" class="btn">重开</button>
+          <label class="speed">
+            速度
+            <input type="range" id="speed" min="4" max="20" value="10" />
+            <span id="speedVal">10</span>
+          </label>
+        </div>
+
+        <div class="touch-controls" aria-label="触控方向键">
+          <div class="row">
+            <button class="pad" data-dir="up" aria-label="上">▲</button>
+          </div>
+          <div class="row">
+            <button class="pad" data-dir="left" aria-label="左">◀</button>
+            <button class="pad" data-dir="right" aria-label="右">▶</button>
+          </div>
+          <div class="row">
+            <button class="pad" data-dir="down" aria-label="下">▼</button>
+          </div>
+        </div>
+      </main>
+
+      <footer class="site-footer">
+        <p>键盘：方向键/WASD 移动，空格 开始/暂停，R 重开。</p>
+      </footer>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+  </html>
